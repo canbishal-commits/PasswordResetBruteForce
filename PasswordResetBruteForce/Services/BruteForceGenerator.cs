@@ -1,10 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace PasswordResetBruteForce.Services
 {
-    internal class BruteForceGenerator
+    public class BruteForceGenerator
     {
+        private const string Characters = "abcdefghijklmnopqrstuvwxyz";
+
+        public IEnumerable<string> GenerateCombinations()
+        {
+            for (int length = 1; length <= 6; length++)
+            {
+                foreach (string combination in GenerateRecursive("", length))
+                {
+                    yield return combination;
+                }
+            }
+        }
+
+        private IEnumerable<string> GenerateRecursive(string current, int remainingLength)
+        {
+            if (remainingLength == 0)
+            {
+                yield return current;
+                yield break;
+            }
+
+            foreach (char c in Characters)
+            {
+                foreach (string result in GenerateRecursive(current + c, remainingLength - 1))
+                {
+                    yield return result;
+                }
+            }
+        }
     }
 }

@@ -17,4 +17,14 @@ Course Assignment
 - SHA256 hashing
 - Static salt
 - Password display
-- Hash display
+- Hash displaygit 
+
+## Version 0.3
+
+### Implemented
+
+- Password validation class
+- Brute force combination generator
+- Recursive generation logic
+- Combination lengths from 1 to 6
+- Generator testing completed

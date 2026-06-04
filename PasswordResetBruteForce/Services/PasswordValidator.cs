@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PasswordResetBruteForce.Services
+﻿namespace PasswordResetBruteForce.Services
 {
-    internal class PasswordValidator
+    public class PasswordValidator
     {
+        public bool Validate(string candidatePassword, string targetHash)
+        {
+            PasswordHasher hasher = new PasswordHasher();
+
+            string candidateHash = hasher.HashPassword(candidatePassword);
+
+            return candidateHash == targetHash;
+        }
     }
 }

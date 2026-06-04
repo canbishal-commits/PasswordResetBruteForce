@@ -34,6 +34,8 @@
             lblPassword = new Label();
             label2 = new Label();
             lblHash = new Label();
+            label3 = new Label();
+            lblCurrentAttempt = new Label();
             SuspendLayout();
             // 
             // btnGeneratePassword
@@ -58,7 +60,7 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(1, 101);
+            progressBar1.Location = new Point(1, 126);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(243, 34);
             progressBar1.TabIndex = 2;
@@ -90,11 +92,32 @@
             lblHash.TabIndex = 5;
             lblHash.Text = "-";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(1, 98);
+            label3.Name = "label3";
+            label3.Size = new Size(145, 25);
+            label3.TabIndex = 6;
+            label3.Text = "Current Attempt:";
+            label3.Click += label3_Click;
+            // 
+            // lblCurrentAttempt
+            // 
+            lblCurrentAttempt.AutoSize = true;
+            lblCurrentAttempt.Location = new Point(152, 98);
+            lblCurrentAttempt.Name = "lblCurrentAttempt";
+            lblCurrentAttempt.Size = new Size(19, 25);
+            lblCurrentAttempt.TabIndex = 7;
+            lblCurrentAttempt.Text = "-";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblCurrentAttempt);
+            Controls.Add(label3);
             Controls.Add(lblHash);
             Controls.Add(label2);
             Controls.Add(lblPassword);
@@ -115,5 +138,7 @@
         private Label lblPassword;
         private Label label2;
         private Label lblHash;
+        private Label label3;
+        private Label lblCurrentAttempt;
     }
 }

@@ -20,10 +20,14 @@ namespace PasswordResetBruteForce
 
             lblPassword.Text = currentPassword;
             lblHash.Text = hash;
-
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

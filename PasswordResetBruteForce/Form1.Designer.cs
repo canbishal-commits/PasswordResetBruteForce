@@ -36,6 +36,11 @@
             lblHash = new Label();
             label3 = new Label();
             lblCurrentAttempt = new Label();
+            btnStartAttack = new Button();
+            label4 = new Label();
+            lblFoundPassword = new Label();
+            label5 = new Label();
+            lblElapsedTime = new Label();
             SuspendLayout();
             // 
             // btnGeneratePassword
@@ -111,11 +116,62 @@
             lblCurrentAttempt.TabIndex = 7;
             lblCurrentAttempt.Text = "-";
             // 
+            // btnStartAttack
+            // 
+            btnStartAttack.Location = new Point(1, 166);
+            btnStartAttack.Name = "btnStartAttack";
+            btnStartAttack.Size = new Size(112, 34);
+            btnStartAttack.TabIndex = 8;
+            btnStartAttack.Text = "Start Attack";
+            btnStartAttack.UseVisualStyleBackColor = true;
+            btnStartAttack.Click += btnStartAttack_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(1, 203);
+            label4.Name = "label4";
+            label4.Size = new Size(147, 25);
+            label4.TabIndex = 9;
+            label4.Text = "Found Password:";
+            // 
+            // lblFoundPassword
+            // 
+            lblFoundPassword.AutoSize = true;
+            lblFoundPassword.Location = new Point(152, 203);
+            lblFoundPassword.Name = "lblFoundPassword";
+            lblFoundPassword.Size = new Size(19, 25);
+            lblFoundPassword.TabIndex = 10;
+            lblFoundPassword.Text = "-";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(1, 228);
+            label5.Name = "label5";
+            label5.Size = new Size(120, 25);
+            label5.TabIndex = 11;
+            label5.Text = "Elapsed Time:";
+            // 
+            // lblElapsedTime
+            // 
+            lblElapsedTime.AutoSize = true;
+            lblElapsedTime.Location = new Point(127, 228);
+            lblElapsedTime.Name = "lblElapsedTime";
+            lblElapsedTime.Size = new Size(22, 25);
+            lblElapsedTime.TabIndex = 12;
+            lblElapsedTime.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblElapsedTime);
+            Controls.Add(label5);
+            Controls.Add(lblFoundPassword);
+            Controls.Add(label4);
+            Controls.Add(btnStartAttack);
             Controls.Add(lblCurrentAttempt);
             Controls.Add(label3);
             Controls.Add(lblHash);
@@ -140,5 +196,10 @@
         private Label lblHash;
         private Label label3;
         private Label lblCurrentAttempt;
+        private Button btnStartAttack;
+        private Label label4;
+        private Label lblFoundPassword;
+        private Label label5;
+        private Label lblElapsedTime;
     }
 }

@@ -28,3 +28,13 @@ Course Assignment
 - Recursive generation logic
 - Combination lengths from 1 to 6
 - Generator testing completed
+
+## Version 0.4
+
+### Implemented
+
+- Single-thread brute force attack
+- Password recovery functionality
+- Found password output
+- Elapsed time measurement
+- AttackManager service

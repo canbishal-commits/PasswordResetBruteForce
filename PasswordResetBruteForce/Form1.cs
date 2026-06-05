@@ -40,7 +40,10 @@ namespace PasswordResetBruteForce
             string? foundPassword = attackManager.StartAttack(currentHash);
 
             lblFoundPassword.Text = foundPassword;
-            lblElapsedTime.Text = attackManager.ElapsedMilliseconds + " ms";
+            TimeSpan elapsed = TimeSpan.FromMilliseconds(attackManager.ElapsedMilliseconds);
+
+            lblElapsedTime.Text =
+                $"{elapsed.Minutes} min {elapsed.Seconds} sec {elapsed.Milliseconds} ms";
         }
     }
 }

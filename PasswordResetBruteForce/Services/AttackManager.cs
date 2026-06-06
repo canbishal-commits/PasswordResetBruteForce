@@ -1,10 +1,14 @@
 ﻿using System.Diagnostics;
+using System.Threading;
+
+
 
 namespace PasswordResetBruteForce.Services
 {
     public class AttackManager
     {
         public long ElapsedMilliseconds { get; private set; }
+        private CancellationTokenSource cancellationTokenSource = new();
 
         private readonly BruteForceGenerator generator;
         private readonly PasswordValidator validator;
@@ -36,6 +40,10 @@ namespace PasswordResetBruteForce.Services
             ElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
 
             return null;
+        }
+        public void StopAttack()
+        {
+            cancellationTokenSource.Cancel();
         }
     }
 }

@@ -45,5 +45,20 @@ namespace PasswordResetBruteForce
             lblElapsedTime.Text =
                 $"{elapsed.Minutes} min {elapsed.Seconds} sec {elapsed.Milliseconds} ms";
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

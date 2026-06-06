@@ -41,6 +41,7 @@
             lblFoundPassword = new Label();
             label5 = new Label();
             lblElapsedTime = new Label();
+            btnStopAttack = new Button();
             SuspendLayout();
             // 
             // btnGeneratePassword
@@ -65,7 +66,7 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(1, 126);
+            progressBar1.Location = new Point(1, 216);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(243, 34);
             progressBar1.TabIndex = 2;
@@ -118,7 +119,7 @@
             // 
             // btnStartAttack
             // 
-            btnStartAttack.Location = new Point(1, 166);
+            btnStartAttack.Location = new Point(4, 126);
             btnStartAttack.Name = "btnStartAttack";
             btnStartAttack.Size = new Size(112, 34);
             btnStartAttack.TabIndex = 8;
@@ -129,16 +130,17 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1, 203);
+            label4.Location = new Point(-1, 163);
             label4.Name = "label4";
             label4.Size = new Size(147, 25);
             label4.TabIndex = 9;
             label4.Text = "Found Password:";
+            label4.Click += label4_Click;
             // 
             // lblFoundPassword
             // 
             lblFoundPassword.AutoSize = true;
-            lblFoundPassword.Location = new Point(152, 203);
+            lblFoundPassword.Location = new Point(152, 163);
             lblFoundPassword.Name = "lblFoundPassword";
             lblFoundPassword.Size = new Size(19, 25);
             lblFoundPassword.TabIndex = 10;
@@ -147,26 +149,38 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1, 228);
+            label5.Location = new Point(1, 188);
             label5.Name = "label5";
             label5.Size = new Size(120, 25);
             label5.TabIndex = 11;
             label5.Text = "Elapsed Time:";
+            label5.Click += label5_Click;
             // 
             // lblElapsedTime
             // 
             lblElapsedTime.AutoSize = true;
-            lblElapsedTime.Location = new Point(127, 228);
+            lblElapsedTime.Location = new Point(127, 188);
             lblElapsedTime.Name = "lblElapsedTime";
             lblElapsedTime.Size = new Size(22, 25);
             lblElapsedTime.TabIndex = 12;
             lblElapsedTime.Text = "0";
+            // 
+            // btnStopAttack
+            // 
+            btnStopAttack.Location = new Point(122, 126);
+            btnStopAttack.Name = "btnStopAttack";
+            btnStopAttack.Size = new Size(112, 34);
+            btnStopAttack.TabIndex = 13;
+            btnStopAttack.Text = "Stop Attack";
+            btnStopAttack.UseVisualStyleBackColor = true;
+            btnStopAttack.Click += button1_Click_1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnStopAttack);
             Controls.Add(lblElapsedTime);
             Controls.Add(label5);
             Controls.Add(lblFoundPassword);
@@ -201,5 +215,6 @@
         private Label lblFoundPassword;
         private Label label5;
         private Label lblElapsedTime;
+        private Button btnStopAttack;
     }
 }

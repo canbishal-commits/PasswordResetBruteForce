@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using PasswordResetBruteForce.Services;
 namespace PasswordResetBruteForce
 {
@@ -5,9 +6,11 @@ namespace PasswordResetBruteForce
     {
         private string currentPassword = "";
         private string currentHash = "";
+        private AttackManager attackManager = new AttackManager();
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show((Environment.ProcessorCount - 1).ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,22 +36,26 @@ namespace PasswordResetBruteForce
 
         }
 
-        private void btnStartAttack_Click(object sender, EventArgs e)
+        private async void btnStartAttack_Click(object sender, EventArgs e)
         {
-            AttackManager attackManager = new AttackManager();
 
-            string? foundPassword = attackManager.StartAttack(currentHash);
+            lblFoundPassword.Text = "Searching...";
+
+            string? foundPassword = await Task.Run(() =>
+            {
+                return attackManager.StartAttack(currentHash);
+            });
 
             lblFoundPassword.Text = foundPassword;
+
             TimeSpan elapsed = TimeSpan.FromMilliseconds(attackManager.ElapsedMilliseconds);
 
-            lblElapsedTime.Text =
-                $"{elapsed.Minutes} min {elapsed.Seconds} sec {elapsed.Milliseconds} ms";
+            lblElapsedTime.Text = elapsed.ToString(@"mm\:ss\.fff");
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            attackManager.StopAttack();
         }
 
         private void label4_Click(object sender, EventArgs e)

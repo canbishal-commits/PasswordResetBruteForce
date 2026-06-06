@@ -20,11 +20,17 @@ namespace PasswordResetBruteForce.Services
         }
 
         public string? StartAttack(string targetHash)
+
+
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
 
             foreach (string candidate in generator.GenerateCombinations())
             {
+                if (cancellationTokenSource.Token.IsCancellationRequested)
+                {
+                    return null;
+                }
                 if (validator.Validate(candidate, targetHash))
                 {
                     stopwatch.Stop();

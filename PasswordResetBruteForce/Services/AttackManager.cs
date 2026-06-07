@@ -8,6 +8,9 @@ namespace PasswordResetBruteForce.Services
     {
         public long ElapsedMilliseconds { get; private set; }
 
+        public Action<string>? OnAttempt;
+        public Action<int>? OnProgress;
+
         private CancellationTokenSource cancellationTokenSource = new();
 
         private readonly BruteForceGenerator generator;
@@ -16,6 +19,9 @@ namespace PasswordResetBruteForce.Services
         private string? foundPassword;
         private readonly object lockObject = new();
 
+        private long attempts = 0;
+
+        private const long TotalCombinations = 321272406;
         public AttackManager()
         {
             generator = new BruteForceGenerator();
@@ -25,6 +31,7 @@ namespace PasswordResetBruteForce.Services
         public string? StartAttack(string targetHash)
         {
             foundPassword = null;
+            attempts = 0;
 
             cancellationTokenSource = new CancellationTokenSource();
 
@@ -47,6 +54,8 @@ namespace PasswordResetBruteForce.Services
 
             ElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
 
+            OnProgress?.Invoke(100);
+
             return foundPassword;
         }
 
@@ -61,6 +70,23 @@ namespace PasswordResetBruteForce.Services
             {
                 foreach (string candidate in generator.GenerateCombinationsForPrefix(prefix))
                 {
+                    long currentAttempts =
+                        Interlocked.Increment(ref attempts);
+
+                    if (currentAttempts % 5000 == 0)
+                    {
+                        OnAttempt?.Invoke(candidate);
+                    }
+
+                    if (currentAttempts % 10000 == 0)
+                    {
+                        int progress =
+                            (int)((currentAttempts * 100) / TotalCombinations);
+
+                        OnProgress?.Invoke(
+                            Math.Min(progress, 99));
+                    }
+
                     if (cancellationTokenSource.Token.IsCancellationRequested)
                     {
                         return;
@@ -68,12 +94,16 @@ namespace PasswordResetBruteForce.Services
 
                     if (validator.Validate(candidate, targetHash))
                     {
-                        Console.WriteLine("FOUND PASSWORD: " + candidate);
                         lock (lockObject)
                         {
                             if (foundPassword == null)
                             {
                                 foundPassword = candidate;
+
+                                OnAttempt?.Invoke(candidate);
+
+                                OnProgress?.Invoke(100);
+
                                 cancellationTokenSource.Cancel();
                             }
                         }

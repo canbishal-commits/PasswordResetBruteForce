@@ -8,7 +8,7 @@ namespace PasswordResetBruteForce.Services
 
         public IEnumerable<string> GenerateCombinations()
         {
-            for (int length = 1; length <= 5; length++)
+            for (int length = 1; length <= 6; length++)
             {
                 foreach (string combination in GenerateRecursive("", length))
                 {
@@ -18,7 +18,7 @@ namespace PasswordResetBruteForce.Services
         }
         public IEnumerable<string> GenerateCombinationsForPrefix(char prefix)
         {
-            for (int length = 1; length <= 5; length++)
+            for (int length = 1; length <= 6; length++)
             {
                 if (length == 1)
                 {

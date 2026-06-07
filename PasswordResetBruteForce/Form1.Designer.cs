@@ -42,11 +42,16 @@
             label5 = new Label();
             lblElapsedTime = new Label();
             btnStopAttack = new Button();
+            btnSingleThreadTest = new Button();
+            btnMultiThreadTest = new Button();
+            lblSingleResult = new Label();
+            lblMultiResult = new Label();
+            lblWinner = new Label();
             SuspendLayout();
             // 
             // btnGeneratePassword
             // 
-            btnGeneratePassword.Location = new Point(1, 5);
+            btnGeneratePassword.Location = new Point(4, 5);
             btnGeneratePassword.Name = "btnGeneratePassword";
             btnGeneratePassword.Size = new Size(243, 34);
             btnGeneratePassword.TabIndex = 0;
@@ -66,10 +71,11 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(1, 216);
+            progressBar1.Location = new Point(4, 216);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(243, 34);
             progressBar1.TabIndex = 2;
+            progressBar1.Click += progressBar1_Click;
             // 
             // lblPassword
             // 
@@ -175,11 +181,65 @@
             btnStopAttack.UseVisualStyleBackColor = true;
             btnStopAttack.Click += button1_Click_1;
             // 
+            // btnSingleThreadTest
+            // 
+            btnSingleThreadTest.Location = new Point(4, 256);
+            btnSingleThreadTest.Name = "btnSingleThreadTest";
+            btnSingleThreadTest.Size = new Size(112, 34);
+            btnSingleThreadTest.TabIndex = 14;
+            btnSingleThreadTest.Text = "Single Thread Test";
+            btnSingleThreadTest.UseVisualStyleBackColor = true;
+            btnSingleThreadTest.Click += button1_Click_2;
+            // 
+            // btnMultiThreadTest
+            // 
+            btnMultiThreadTest.Location = new Point(4, 301);
+            btnMultiThreadTest.Name = "btnMultiThreadTest";
+            btnMultiThreadTest.Size = new Size(112, 34);
+            btnMultiThreadTest.TabIndex = 15;
+            btnMultiThreadTest.Text = "Multi Thread Test";
+            btnMultiThreadTest.UseVisualStyleBackColor = true;
+            btnMultiThreadTest.Click += btnMultiThreadTest_Click;
+            // 
+            // lblSingleResult
+            // 
+            lblSingleResult.AutoSize = true;
+            lblSingleResult.Location = new Point(117, 265);
+            lblSingleResult.Name = "lblSingleResult";
+            lblSingleResult.Size = new Size(135, 25);
+            lblSingleResult.TabIndex = 17;
+            lblSingleResult.Text = "Single Thread: -";
+            lblSingleResult.Click += label6_Click;
+            // 
+            // lblMultiResult
+            // 
+            lblMultiResult.AutoSize = true;
+            lblMultiResult.Location = new Point(117, 306);
+            lblMultiResult.Name = "lblMultiResult";
+            lblMultiResult.Size = new Size(127, 25);
+            lblMultiResult.TabIndex = 18;
+            lblMultiResult.Text = "Multi Thread: -";
+            lblMultiResult.Click += label7_Click;
+            // 
+            // lblWinner
+            // 
+            lblWinner.AutoSize = true;
+            lblWinner.Location = new Point(4, 338);
+            lblWinner.Name = "lblWinner";
+            lblWinner.Size = new Size(84, 25);
+            lblWinner.TabIndex = 19;
+            lblWinner.Text = "Winner: -";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(820, 450);
+            Controls.Add(lblWinner);
+            Controls.Add(lblMultiResult);
+            Controls.Add(lblSingleResult);
+            Controls.Add(btnMultiThreadTest);
+            Controls.Add(btnSingleThreadTest);
             Controls.Add(btnStopAttack);
             Controls.Add(lblElapsedTime);
             Controls.Add(label5);
@@ -216,5 +276,10 @@
         private Label label5;
         private Label lblElapsedTime;
         private Button btnStopAttack;
+        private Button btnSingleThreadTest;
+        private Button btnMultiThreadTest;
+        private Label lblSingleResult;
+        private Label lblMultiResult;
+        private Label lblWinner;
     }
 }

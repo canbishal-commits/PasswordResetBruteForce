@@ -2,14 +2,14 @@
 
 Course Assignment
 
-## Version 0.1
+## Version 1
 
 - Created WinForms project
 - Created folder structure
 - Added service classes
 - Created initial GUI
 
-## Version 0.2
+## Version 2
 
 ### Implemented
 
@@ -19,7 +19,7 @@ Course Assignment
 - Password display
 - Hash displaygit 
 
-## Version 0.3
+## Version 3
 
 ### Implemented
 
@@ -29,7 +29,7 @@ Course Assignment
 - Combination lengths from 1 to 6
 - Generator testing completed
 
-## Version 0.4
+## Version 4
 
 ### Implemented
 
@@ -39,7 +39,7 @@ Course Assignment
 - Elapsed time measurement
 - AttackManager service
 
-## Version 0.5
+## Version 5
 
 ### Implemented
 

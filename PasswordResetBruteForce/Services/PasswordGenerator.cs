@@ -10,7 +10,7 @@ namespace PasswordResetBruteForce.Services
 
         public string GeneratePassword()
         {
-            int length = random.Next(4, 7);
+            int length = random.Next(4, 6);
 
             StringBuilder password = new StringBuilder();
 

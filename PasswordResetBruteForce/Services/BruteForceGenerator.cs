@@ -16,7 +16,23 @@ namespace PasswordResetBruteForce.Services
                 }
             }
         }
-
+        public IEnumerable<string> GenerateCombinationsForPrefix(char prefix)
+        {
+            for (int length = 1; length <= 6; length++)
+            {
+                if (length == 1)
+                {
+                    yield return prefix.ToString();
+                }
+                else
+                {
+                    foreach (string result in GenerateRecursive(prefix.ToString(), length - 1))
+                    {
+                        yield return result;
+                    }
+                }
+            }
+        }
         private IEnumerable<string> GenerateRecursive(string current, int remainingLength)
         {
             if (remainingLength == 0)

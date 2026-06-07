@@ -10,7 +10,6 @@ namespace PasswordResetBruteForce
         public Form1()
         {
             InitializeComponent();
-            MessageBox.Show((Environment.ProcessorCount - 1).ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +37,6 @@ namespace PasswordResetBruteForce
 
         private async void btnStartAttack_Click(object sender, EventArgs e)
         {
-
             lblFoundPassword.Text = "Searching...";
 
             string? foundPassword = await Task.Run(() =>

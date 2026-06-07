@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 
 
@@ -12,6 +13,8 @@ namespace PasswordResetBruteForce.Services
 
         private readonly BruteForceGenerator generator;
         private readonly PasswordValidator validator;
+        private string? foundPassword;
+        private readonly object lockObject = new();
 
         public AttackManager()
         {
@@ -20,7 +23,6 @@ namespace PasswordResetBruteForce.Services
         }
 
         public string? StartAttack(string targetHash)
-
 
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -48,8 +50,34 @@ namespace PasswordResetBruteForce.Services
             return null;
         }
         public void StopAttack()
+
         {
             cancellationTokenSource.Cancel();
         }
+        private void SearchPrefix(char prefix, string targetHash)
+        {
+            foreach (string candidate in generator.GenerateCombinationsForPrefix(prefix))
+            {
+                if (cancellationTokenSource.Token.IsCancellationRequested)
+                {
+                    return;
+                }
+
+                if (validator.Validate(candidate, targetHash))
+                {
+                    lock (lockObject)
+                    {
+                        if (foundPassword == null)
+                        {
+                            foundPassword = candidate;
+                            cancellationTokenSource.Cancel();
+                        }
+                    }
+
+                    return;
+                }
+            }
+        }
     }
+
 }
